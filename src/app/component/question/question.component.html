@@ -1,0 +1,33 @@
+<span
+ *ngIf="strike==2"
+  class=".mat-badge-content"
+  matBadge="star"
+  matBadgePosition="above before"
+></span>
+<div
+  class="zigzag question"
+  matRipple
+  [ngStyle]="strike == 3 ? styleObject() : {}"
+>
+  <div class="row" >
+    <a
+      class="title"
+      href="{{question.question.question_url}}" target="_blank"
+
+      matTooltip="{{ question.question.question_description }}"
+      matTooltipClass="tooltip"
+    >
+
+      {{ question.question.question_description }}
+    </a>
+
+    <div *ngIf="personal"class="right">
+      <div (click)="moveToFlag(question.id,2)" class="heart">
+        <mat-icon [ngStyle]="strike == 2 ? colorFill() :{}">{{strike==2?'favorite':'favorite_border'}}</mat-icon>
+      </div>
+      <div (click)="moveToDone(question.id, 3)" class="flag">
+        <mat-icon [ngStyle]="strike == 3 ? colorFill() :{}">{{strike==3?'check_box':'check_box_outline_blank'}}</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

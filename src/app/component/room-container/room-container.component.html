@@ -1,0 +1,19 @@
+<div class="container">
+  <app-side-bar [selected]="'rooms'"></app-side-bar>
+  <div class="right">
+    <app-header [title]="'Rooms'"></app-header>
+    <mat-tab-group mat-stretch-tabs>
+      <mat-tab  label="Rooms">
+        <div *ngIf="loaderService.isLoading | async" class="load-container">
+          <app-spinner></app-spinner>
+        </div>
+        <div class="card-container">
+         <app-room-card *ngFor="let room of userRooms" [room]="room"></app-room-card>
+
+        </div>
+      </mat-tab>
+
+      </mat-tab-group>
+  </div>
+</div>
+

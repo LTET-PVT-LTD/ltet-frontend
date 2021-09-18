@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="login-box">
+    <div class="heading">
+      <h3>Join Room</h3>
+    </div>
+    <div class="list">
+      <form [formGroup]="joinForm" (ngSubmit)="onSubmit()">
+
+          <label>Enter Code</label>
+
+          <div class="form-group">
+            <input type="text" formControlName="code" />
+            <span
+              *ngIf="
+                !joinForm.get('code')?.valid && joinForm.get('code')?.touched
+              "
+              style="color: red"
+              >Please Enter Code</span
+            >
+          </div>
+
+        <button mat-raised-button color="primary">Join Room</button>
+      </form>
+    </div>
+  </div>
+</div>

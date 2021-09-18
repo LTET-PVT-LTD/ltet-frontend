@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="logo">LTET</div>
+
+  <div class="email">
+    <mat-icon *ngIf="user.email != ''" class="icon">person</mat-icon>
+    <div>{{ user.email }}</div>
+  </div>
+  <div class="text-container">
+    <div
+      [ngStyle]="selected == 'sheets' ? styleObject() : {}"
+      class="text"
+      routerLink=""
+    >
+      <mat-icon  class="icon space">library_books</mat-icon> All Sheets
+    </div>
+    <div
+      *ngIf="user.email != ''"
+      [ngStyle]="selected == 'learning' ? styleObject() : {}"
+      routerLink="/learning"
+      class="text"
+    >
+      <mat-icon class="icon">face</mat-icon>My Learning
+    </div>
+    <div
+      *ngIf="user.email != ''"
+      [ngStyle]="selected == 'rooms' ? styleObject() : {}"
+      class="text"
+      routerLink="/room"
+    >
+      <mat-icon class="icon">home</mat-icon>Study Rooms
+    </div>
+    <button *ngIf="user.email != ''" mat-raised-button (click)="logout()">
+      Logout
+    </button>
+  </div>
+</div>

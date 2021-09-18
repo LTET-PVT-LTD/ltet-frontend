@@ -1,0 +1,107 @@
+.container{
+  width:100%;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+
+
+  mat-card{
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.2rem;
+    align-items: center;
+    gap:0.2rem;
+    border: 1px solid #19ff90;
+
+    // border-left: 1px solid grey;
+
+    .above{
+      width:100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap:0.2rem;
+
+      .icon-exp-class{
+        width:100%;
+        height:80%;
+
+        display: flex;
+        align-items: center;
+        text-overflow: ellipsis;
+        div{
+
+          text-overflow: ellipsis;
+
+        }
+        // justify-content: center;
+        gap:0.2rem;
+        margin-left: 0.6rem;
+        mat-icon{
+          font-size: 1.2rem;
+          display: flex;
+          align-items: center;
+        }
+        .name{
+          overflow: hidden;
+          color:gray;
+          text-overflow: ellipsis;
+        }
+      }
+      .code{
+        font-weight: bold;
+        font-weight: 1.2rem;
+      }
+      .divider{
+        width:100%;
+        border-bottom: 1px solid black;
+      }
+
+    }
+    .below{
+      width:100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap:0.2rem;
+      .icon-exp-class{
+        width:100%;
+        height:80%;
+        margin-top: 0.4rem;
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+
+        gap:0.2rem;
+        margin-left: 0.6rem;
+        mat-icon{
+          font-size: 1.2rem;
+          display: flex;
+          align-items: center;
+        }
+        .name{
+          color:gray;
+        }
+      }
+    }
+
+
+  }
+}
+
+.container:hover{
+  transform: scale(1.05);
+}
+
+
+
+.green{
+  background-color: #03BB6D ;
+}
+
+::ng-deep .mat-tooltip  {
+  white-space: pre-line    !important;
+}

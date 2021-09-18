@@ -1,0 +1,19 @@
+
+  <div class="container">
+    <mat-card-content [ngStyle]="{ color: data.color }">{{
+      data.message
+    }}</mat-card-content>
+    <div class="row">
+      <button
+        *ngIf="data.id"
+        mat-raised-button
+        color="primary"
+        (click)="enroll()"
+        [mat-dialog-close]="true"
+      >
+        Enroll
+      </button>
+      <button mat-raised-button [mat-dialog-close]="true">ok</button>
+    </div>
+  </div>
+

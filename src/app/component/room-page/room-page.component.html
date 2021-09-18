@@ -1,0 +1,55 @@
+<div class="container">
+  <app-side-bar [selected]="'rooms'"></app-side-bar>
+  <div class="right">
+    <app-header [title]="'Room'"></app-header>
+    <mat-tab-group mat-stretch-tabs>
+      <mat-tab label="Room">
+        <div *ngIf="isLoading" class="load-container">
+          <app-spinner></app-spinner>
+        </div>
+        <div class="question-section" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let user of room.users_questions">
+            <div *ngIf="user.user_email==currUser.email"  class="user-section" >
+              <button  mat-raised-button class="email" color="primary" >{{ user.user_email }}</button>
+              <div class="question">
+                <div *ngFor="let question of user.questions">
+                  <app-question [question]="question" [personal]="true"></app-question>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div *ngFor="let user of users_question"  cdkDrag>
+            <div class="example-custom-placeholder"*cdkDragPlaceholder></div>
+              <div   *ngIf="user.user_email!=currUser.email" class="user-section">
+
+                  <button  mat-raised-button class="email" color="primary"  >{{ user.user_email }}</button>
+                  <div class="question">
+                    <div *ngFor="let question of user.questions" >
+                      <app-question [question]="question" [personal]="false"></app-question>
+                    </div>
+                  </div>
+
+
+
+
+              </div>
+
+
+
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <div class="board">
+    <div class="heading">
+      <h3>Room</h3>
+    </div>
+
+
+  </div>
+</div> -->

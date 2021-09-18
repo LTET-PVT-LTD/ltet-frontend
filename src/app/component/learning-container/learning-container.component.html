@@ -1,0 +1,71 @@
+<!-- <div class="container">
+  <div class="heading">
+    <h3>{{sheet.sheet_name}}</h3>
+  </div>
+  <div class="sheet-container">
+    <div *ngFor="let question of sheet.questions">
+      <app-sheet [question]="question"></app-sheet>
+  </div>
+  </div>
+</div> -->
+
+
+
+
+<!-- <div class="container">
+  <app-side-bar [selected]="'sheets'"></app-side-bar>
+  <div class="right">
+    <app-header [title]="sheet.sheet_name"></app-header>
+    <mat-tab-group mat-stretch-tabs>
+      <mat-tab  label={{sheet.sheet_name}}>
+
+        <div class="sheet-container">
+          <div *ngFor="let users of userRoom.users_questions">.
+            <div *ngIf="users.user_email==user.email">
+              <app-question  *ngFor="let question of users.questions" [question]="question"></app-question>
+            </div>
+
+        </div>
+        </div>
+
+      </mat-tab>
+
+      </mat-tab-group>
+  </div>
+</div> -->
+
+
+<div class="container">
+  <app-side-bar [selected]="'learning'"></app-side-bar>
+  <div class="right">
+    <app-header></app-header>
+    <mat-tab-group mat-stretch-tabs>
+      <mat-tab *ngIf="sheet" label={{sheet.sheet_name}}>
+        <div *ngIf="isLoading" class="load-container">
+          <app-spinner></app-spinner>
+        </div>
+        <div class="sheet-container">
+          <div class="users" *ngFor="let users of userRoom.users_questions">
+            <div *ngIf="users.user_email==user.email && id==userRoom.sheet.id">
+              <app-question  *ngFor="let question of users.questions" [question]="question" [personal]="true"></app-question>
+            </div>
+
+
+        </div>
+        </div>
+
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <div class="board">
+    <div class="heading">
+      <h3>Room</h3>
+    </div>
+
+
+  </div>
+</div> -->

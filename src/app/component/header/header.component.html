@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="left">
+    <img *ngIf="title!=''" src="../../../assets/back.svg" routerLink="">
+    <div class="title">{{title}}</div>
+  </div>
+  <div class="right">
+    <button *ngIf="(title=='Babbar Bhaiya'||title=='Striver Bhaiya') && disable==false"   mat-raised-button (click)="openEnroll()">
+      Enroll Sheet
+    </button>
+    <button *ngIf="(title=='Babbar Bhaiya'||title=='Striver Bhaiya') && disable==true" disabled [ngStyle]="disable ==true ? disabled() : {}" mat-raised-button (click)="openEnroll()">
+      Enroll Sheet
+    </button>
+    <button *ngIf="title=='Babbar Bhaiya'||title=='Striver Bhaiya'" mat-raised-button (click)="openRoom()">
+      Create Room
+    </button>
+    <button *ngIf="title=='Rooms'" mat-raised-button (click)="openRoomCard()">
+      Create Room
+    </button>
+    <button *ngIf="title=='Rooms'" mat-raised-button (click)="joinRoom()">
+      Join Room
+    </button>
+
+    <button *ngIf="title=='Room'" mat-raised-button (click)="invite()">
+      Invite
+    </button>
+
+    <button *ngIf="user.email==''" mat-raised-button (click)="openLogin()">
+      Login
+    </button>
+
+
+  </div>
+
+
+</div>

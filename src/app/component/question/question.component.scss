@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
+.question {
+  height: 60px;
+  width: 92%;
+
+  margin-bottom: 0.6rem;
+  background-color: black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  font-family: 'Kalam', cursive;
+  border-left: 1px solid #00ff84;
+  border-top: 1px solid #00ff84;
+  border-bottom: 1px solid #00ff84;
+  padding-left: 0.4rem;
+  margin-left: 0.6rem;
+  margin-top: 0.6rem;
+  gap:0.4rem;
+
+
+
+.row{
+  width:100%;
+  height:100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+
+  .title{
+    width:83%;
+    height:50%;
+
+    font-size: 1.2rem;
+    overflow: hidden;
+    cursor: pointer;
+   white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+
+
+  }
+  a,a:active{
+    text-decoration: none;
+    color: black;
+
+  }
+  a:hover{
+    text-decoration: none;
+    color:purple;
+  }
+  .right{
+    width:15%;
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    justify-content: flex-end;
+
+    margin-right: 1rem;
+    gap:0.2rem;
+    .flag{
+
+      cursor:pointer;
+
+
+    }
+    .heart{
+      cursor: pointer;
+
+
+    }
+
+  }
+
+}
+
+
+
+}
+
+
+
+.zigzag {
+
+  background: linear-gradient(-137deg,#d5dad7 5px, transparent 0) 0 5px, linear-gradient(320deg, #dbe4df 5px, #fff 0) 0 5px;
+
+  background-position: right bottom;
+  background-repeat: repeat-y;
+  background-size: 10px 10px;
+}
+
+
+.mat-badge-content{
+  font-family: 'Material Icons';
+  margin-left: 0.7rem;
+  margin-top: 0.7rem;
+
+}
+
+

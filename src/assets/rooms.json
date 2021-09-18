@@ -1,0 +1,154 @@
+{
+  "rooms": [
+    {
+      "users_questions": [
+        {
+          "user_id": 1,
+          "user_email": "ag9991323@gmail.com",
+          "questions": [{
+            "id": 1,
+            "user":{
+              "id":1,
+              "email":"ag9991323@gmail.com"
+            },
+            "question":{
+              "id":1,
+              "question_url": "hnjhjbbuh",
+              "question_description": "Question 1 is the best question",
+              "sheet": 1
+            },
+            "status": 3
+          }
+        ]
+
+        },
+        {
+          "user_id": 1,
+          "user_email": "ag9991323@gmail.com",
+          "questions": [{
+            "id": 1,
+            "user":{
+              "id":1,
+              "email":"ag9991323@gmail.com"
+            },
+            "question":{
+              "id":1,
+              "question_url": "hnjhjbbuh",
+              "question_description": "Question 1 is the best question",
+              "sheet": 1
+            },
+            "status": 2
+          }
+        ]
+
+        },
+        {
+          "user_id": 1,
+          "user_email": "ag9991323@gmail.com",
+          "questions": [{
+            "id": 1,
+            "user":{
+              "id":1,
+              "email":"ag9991323@gmail.com"
+            },
+            "question":{
+              "id":1,
+              "question_url": "hnjhjbbuh",
+              "question_description": "Question 1 is the best question",
+              "sheet": 1
+            },
+            "status": 3
+          },
+          {
+            "id": 1,
+            "user":{
+              "id":1,
+              "email":"ag9991323@gmail.com"
+            },
+            "question":{
+              "id":1,
+              "question_url": "hnjhjbbuh",
+              "question_description": "Question 1 is the best question",
+              "sheet": 1
+            },
+            "status": 2
+          },
+          {
+            "id": 1,
+            "user":{
+              "id":1,
+              "email":"ag9991323@gmail.com"
+            },
+            "question":{
+              "id":1,
+              "question_url": "hnjhjbbuh",
+              "question_description": "Question 1 is the best question he is the best that i can found right now so it is the best possible question ",
+              "sheet": 1
+            },
+            "status": 2
+          },
+          {
+            "id": 1,
+            "user":{
+              "id":1,
+              "email":"ag9991323@gmail.com"
+            },
+            "question":{
+              "id":1,
+              "question_url": "hnjhjbbuh",
+              "question_description": "Question 1 is the best question",
+              "sheet": 1
+            },
+            "status": 1
+          },
+          {
+            "id": 1,
+            "user":{
+              "id":1,
+              "email":"ag9991323@gmail.com"
+            },
+            "question":{
+              "id":1,
+              "question_url": "hnjhjbbuh",
+              "question_description": "Question 1 is the best question",
+              "sheet": 1
+            },
+            "status": 3
+          },
+          {
+            "id": 1,
+            "user":{
+              "id":1,
+              "email":"ag9991323@gmail.com"
+            },
+            "question":{
+              "id":1,
+              "question_url": "hnjhjbbuh",
+              "question_description": "Question 1 is the best question",
+              "sheet": 1
+            },
+            "status": 2
+          }
+        ]
+
+        }
+      ],
+      "id": 1,
+      "sheet": {
+        "id": 1,
+        "questions": [],
+        "sheet_name": "Babbar Sheet",
+        "sheet_description": "ABC",
+        "enrolled_users_count": 2,
+        "enrolled_users": []
+      },
+      "priviliged_room_users": [{
+        "id": 1,
+        "email": "ag9991323@gmail.com"
+      }],
+      "room_users": [],
+      "room_code": "abcde"
+    }
+
+  ]
+}

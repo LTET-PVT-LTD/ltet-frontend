@@ -1,0 +1,77 @@
+
+<mat-tab-group mat-stretch-tabs>
+  <!--   -->
+
+
+  <mat-tab label="SignIn" >
+    <div *ngIf="loaderService.isLoading | async" class="load-container">
+
+      <app-spinner></app-spinner>
+
+    </div>
+    <div class="container">
+
+        <div class="login-box">
+
+          <div class="heading">
+            <h3>Sign In</h3>
+            <p>Enter login credentials</p>
+          </div>
+
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <div class="form-group">
+              <input type="email" formControlName="email" />
+              <label>Enter User Email</label>
+              <span *ngIf="!loginForm.get('email')?.valid && loginForm.get('email')?.touched" style="color:red">Please Enter Email</span>
+            </div>
+            <div class="form-group">
+              <input type="password" formControlName="password"  />
+              <label>Enter Password</label>
+              <span *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color:red">Please Enter Password</span>
+            </div>
+            <label class="check-box">
+              <input id="checkbox" type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+          <button class="login-btn">Sign In</button>
+          </form>
+      </div>
+      </div>
+  </mat-tab>
+  <mat-tab label="SignUp">
+    <div *ngIf="loaderService.isLoading | async" class="load-container">
+
+      <app-spinner></app-spinner>
+
+    </div>
+    <div class="container">
+
+        <div class="login-box">
+
+          <div class="heading">
+            <h3>Sign Up</h3>
+            <p>Enter credentials</p>
+          </div>
+
+          <form [formGroup]="loginForm" (ngSubmit)="onSignUp()">
+            <div class="form-group">
+              <input type="email" formControlName="email" />
+              <label>Enter User Email</label>
+              <span *ngIf="!loginForm.get('email')?.valid && loginForm.get('email')?.touched" style="color:red">Please Enter Email</span>
+            </div>
+            <div class="form-group">
+              <input type="password" formControlName="password"  />
+              <label>Enter Password</label>
+              <span *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color:red">Please Enter Password</span>
+            </div>
+            <label class="check-box">
+              <input id="checkbox" type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+          <button class="login-btn">Sign Up</button>
+          </form>
+      </div>
+      </div>
+  </mat-tab>
+</mat-tab-group>
+
+
+

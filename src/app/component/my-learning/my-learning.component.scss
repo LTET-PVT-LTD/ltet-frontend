@@ -1,0 +1,193 @@
+.container {
+
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  opacity: 0.9;
+
+  app-side-bar {
+    width: 15%;
+    height: 100%;
+  }
+  .right {
+    width: 85%;
+    height: 100%;
+    // background-color: cadetblue;
+    overflow-x:hidden ;
+
+    background-color: white;
+
+    border-top-left-radius: 50px;
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    mat-tab-group {
+      width: 94%;
+      height: 100%;
+      margin-left: 2rem;
+
+
+      .sheet {
+
+        width: 100%;
+        height: 30vw;
+        display: flex;
+        margin: auto;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        gap:1rem;
+        margin-top: 2rem;
+
+        div {
+          width: 30%;
+          height:40%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+
+          // mat-card {
+          //   display: flex;
+          //   flex-direction: column;
+          //   align-items: center;
+          //   border-bottom: 0.5px solid lightgray;
+          //   mat-card-header {
+          //     align-self: flex-start;
+          //     margin-left: 0.5rem;
+          //   }
+          //   img {
+          //     width: 80%;
+          //     height: 30%;
+          //   }
+          //   button{
+
+          //     height:2rem;
+          //     padding:8px;
+          //     display: flex;
+          //     align-items: center;
+          //     justify-content: center;
+          //     font-weight: bold;
+          //     background-color: #00ff84;
+          //   }
+
+
+          // }
+          mat-card{
+            width:100%;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 0.2rem;
+            align-items: center;
+            gap:0.2rem;
+
+            border-left: 1px solid grey;
+
+            .above{
+              width:100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap:0.2rem;
+
+              img {
+                    width: 80%;
+                    height: 25%;
+                  }
+
+              .icon-exp-class{
+                width:100%;
+                height:80%;
+
+                display: flex;
+                align-items: center;
+
+                // justify-content: center;
+                gap:0.2rem;
+                margin-left: 0.6rem;
+                mat-icon{
+                  font-size: 1.2rem;
+                  display: flex;
+                  align-items: center;
+                }
+                .name{
+                  width:100%;
+
+                  height:20px;
+                  margin-left: 0.2rem;
+                  overflow:clip ;
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: flex-start;
+                  cursor: pointer;
+                  text-overflow: ellipsis;
+                }
+              }
+              .code{
+                width:100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: bold;
+                font-size: 1.2rem;
+              }
+              .divider{
+                width:100%;
+                border-bottom: 1px solid black;
+              }
+
+            }
+            .below{
+              width:100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap:0.2rem;
+              .icon-exp-class{
+                width:100%;
+                height:80%;
+
+                display: flex;
+                align-items: center;
+
+                // justify-content: center;
+                gap:0.2rem;
+                margin-left: 0.6rem;
+                mat-icon{
+                  font-size: 1.2rem;
+                  display: flex;
+                  align-items: center;
+
+
+                }
+                .name{
+                  width:100%;
+
+                  height:20px;
+
+                  overflow:clip ;
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: flex-start;
+                  cursor: pointer;
+
+                }
+              }
+            }
+
+
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .tooltip {
+
+
+  font-size: 16px;
+}

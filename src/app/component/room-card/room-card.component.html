@@ -1,0 +1,39 @@
+<div (click)="enterRoom()"class="container" matTooltip="{{userList}}">
+  <mat-card>
+    <div class="above">
+      <div class="code">{{room.room_code}}</div>
+      <div class="icon"></div>
+      <div class="icon-exp-class">
+        <mat-icon  >library_books</mat-icon>
+        <div class="text">Sheet:</div>
+        <div class="name">{{room.sheet.sheet_name}}</div>
+      </div>
+      <div class="icon-exp-class">
+        <mat-icon  >person</mat-icon>
+        <div class="text">Creator:</div>
+        <div class="name">{{room.priviliged_room_users[0].email}}</div>
+      </div>
+
+      <div class="divider"></div>
+    </div>
+    <div class="below">
+      <div class="icon-exp-class">
+        <mat-icon>supervised_user_circle</mat-icon>
+        <div class="text">Users:</div>
+        <div class="name">{{room.room_users.length}}</div>
+      </div>
+    </div>
+
+  </mat-card>
+</div>
+
+
+<!-- <mat-card-header>
+  <mat-card-title>Room code : mat-card-title>
+  <mat-card-content>mat-card-content>
+  <mat-card-content>Room Creator : {{room.priviliged_room_users[0].email}}</mat-card-content>
+  <mat-card-content>Enrolled Users : {{room.room_users.length}}</mat-card-content>
+</mat-card-header>
+<mat-card-actions>
+  <button mat-raised-button class="green" (click)="enterRoom()">Enter in this Room</button>
+</mat-card-actions> -->

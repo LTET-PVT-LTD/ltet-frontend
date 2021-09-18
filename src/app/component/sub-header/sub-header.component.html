@@ -1,0 +1,14 @@
+<div class="container">
+  <div  class="room">
+    <button mat-raised-button (click)="openRoom()">Create Room</button>
+  </div>
+  <div *ngIf="user.email!=''" class="room">
+    <button mat-raised-button routerLink="/room">View Room</button>
+  </div>
+  <div  class="room">
+    <button mat-raised-button (click)="openEnroll()">Enroll Sheet</button>
+  </div>
+
+
+</div>
+

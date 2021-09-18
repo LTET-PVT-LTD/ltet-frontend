@@ -1,0 +1,83 @@
+.container{
+  width:100vw;
+  height:100vh;
+  overflow: hidden;
+   display: flex;
+   flex-direction: row;
+   background-color: black;
+   opacity: 0.9;
+   app-side-bar{
+     width:15%;
+     height:100%;
+   }
+   .right{
+     width:85%;
+     height:100%;
+     background-color: white;
+     border-top-left-radius: 50px;
+     display: flex;
+     flex-direction: column;
+     margin-top: 0.4rem;
+
+
+     mat-tab-group{
+       width:94%;
+       height:100%;
+       margin-left: 2rem;
+
+
+
+        .card-container{
+          width:100%;
+          height:440px;
+          margin-top: 1rem;
+
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          align-items: center;
+          overflow-y: scroll;
+
+
+
+          app-room-card{
+            width:25%;
+            margin: 1rem;
+
+
+          }
+        }
+
+        .card-container::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
+        }
+
+        /* Track */
+        .card-container::-webkit-scrollbar-track {
+          // background: #f1f1f1;
+          background-color: #091e4214;
+          box-shadow: inset 0 0 5px grey;
+          border-radius: 10px;
+        }
+
+        /* Handle */
+        .card-container::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        .card-container::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+
+
+
+     }
+   }
+}
+
+
+
