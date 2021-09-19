@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { addRoom } from 'src/app/action/room.action';
+import { addRoom, removeRoom } from 'src/app/action/room.action';
 import { initialSheets, removeSheet } from 'src/app/action/sheet.action';
 import { initialRooms } from 'src/app/action/user_room.action';
 import { LoaderService } from 'src/app/loader/loader.service';
@@ -15,73 +15,75 @@ import { SheetService } from 'src/app/service/sheet.service';
 @Component({
   selector: 'app-learning-container',
   templateUrl: './learning-container.component.html',
-  styleUrls: ['./learning-container.component.scss']
+  styleUrls: ['./learning-container.component.scss'],
 })
-export class LearningContainerComponent implements OnInit {
-  id:any;
-  userRoom!:Room;
-  user!:User;
-  sheet!:Sheet;
-  sheets:Sheet[]=[];
-  isLoading= true;
-  alreadySend=false;
-  constructor(private sheetService:SheetService,private store:Store<{room:Room,user:User,sheet:Sheet[]}>, private roomService:RoomService,private activatedRoute:ActivatedRoute, private dialogService:DialogService, private router:Router, public loaderService:LoaderService) {
+export class LearningContainerComponent implements OnInit, OnDestroy {
+  id: any;
+  userRoom!: Room;
+  user!: User;
+  sheet!: Sheet;
+  sheets: Sheet[] = [];
+  isLoading!: boolean;
+  alreadySend = false;
 
-    this.roomService.allRooms().subscribe(rooms=>{
-      this.isLoading=false;
-      this.store.dispatch(initialRooms({rooms}));
-    });
-    this.store.select("room").subscribe(room=>{
+  constructor(
+    private sheetService: SheetService,
+    private store: Store<{ room: Room; user: User; sheet: Sheet[] }>,
+    private roomService: RoomService,
+    private activatedRoute: ActivatedRoute,
+    private dialogService: DialogService,
+    private router: Router,
+    public loaderService: LoaderService
+  ) {
 
-      this.userRoom= room;
-    })
-    this.store.select("user").subscribe(user=>{
-      this.user= user;
-
-    })
-
-      this.sheetService.getSheet().subscribe(sheets=>{
-
-        // this.store.dispatch(removeSheet());
-
-        this.store.dispatch(initialSheets({sheets}));
-      })
-
-    this.store.select("sheet").subscribe(sheets=>{
-
-      this.sheets= sheets;
-      this.loadSheet();
-
-    })
-
+  }
+  ngOnDestroy(): void {
+   this.store.dispatch(removeRoom());
   }
 
   ngOnInit(): void {
+    this.store.select('room').subscribe((room) => {
+      this.userRoom = room;
+    });
+    this.store.select('user').subscribe((user) => {
+      this.user = user;
+    });
+    this.roomService.isRunning.subscribe((res) => {
+      this.isLoading = res;
+    });
+
+    this.store.select('sheet').subscribe((sheets) => {
+      this.sheets = sheets;
+      this.loadSheet();
+    });
+    this.roomService.allRooms().subscribe((rooms) => {
+      this.store.dispatch(initialRooms({ rooms }));
+    });
+
+    this.sheetService.getSheet().subscribe((sheets) => {
+      // this.store.dispatch(removeSheet());
+      this.store.dispatch(initialSheets({ sheets }));
+    });
 
 
   }
 
-
-
-  loadSheet(){
+  loadSheet() {
     this.activatedRoute.params.subscribe((param: Params) => {
       this.id = param.id;
 
-      for(let i=0;i<this.sheets.length;i++){
-
-        if(this.sheets[i].id==this.id){
-          this.sheet= this.sheets[i];
+      for (let i = 0; i < this.sheets.length; i++) {
+        if (this.sheets[i].id == this.id) {
+          this.sheet = this.sheets[i];
           break;
         }
       }
 
-      if(this.alreadySend==false){
-        this.alreadySend= true;
+      if (this.alreadySend == false) {
+        this.alreadySend = true;
 
-        this.roomService.myLearning(this.user,this.id);
+        this.roomService.myLearning(this.user, this.id);
       }
-
-
     });
   }
 

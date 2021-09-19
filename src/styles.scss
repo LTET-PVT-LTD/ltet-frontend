@@ -11,8 +11,16 @@ body {
 
 
  .bdrop {
-  background-color: #bbbbbbf2;
-  backdrop-filter: blur(4px);
+   width: 85%;
+   height:90%;
+   top:10%;
+   left:15%;
+   position: absolute;
+  // background-color: rgb(184, 172, 172);
+  // backdrop-filter: blur(4px);
+  background-color: rgb(250, 252, 251);
+    backdrop-filter: blur(20px);
+
 }
 
 .mat-tab-body.mat-tab-body-active {

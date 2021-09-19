@@ -35,12 +35,12 @@ export class InviteComponent implements OnInit {
       this.roomService.inviteRoom(this.inviteForm, this.code).subscribe(res=>{
 
         this.dialog.closeAll();
-        this.dialogService.confirmDialog({color:"green",message:"Email sent successfully"});
+        this.dialogService.confirmDialog({color:"green",message:"Email sent successfully",load:false});
 
       },
       err=>{
         this.dialog.closeAll();
-       this.dialogService.confirmDialog({'color':"red","message":"You are alread invited this user"})
+       this.dialogService.confirmDialog({'color':"red","message":"You are alread invited this user",load:false})
       });
 
     }

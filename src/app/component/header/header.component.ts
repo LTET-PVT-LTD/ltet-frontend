@@ -3,12 +3,14 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { addRoom } from 'src/app/action/room.action';
+import { initialSheets } from 'src/app/action/sheet.action';
 import { removeUser } from 'src/app/action/user.action';
 import { Sheet } from 'src/app/model/sheet.model';
 import { User } from 'src/app/model/user.model';
 import { DialogService } from 'src/app/service/dialog.service';
 import { LoginServiceService } from 'src/app/service/login-service.service';
 import { RoomService } from 'src/app/service/room.service';
+import { SheetService } from 'src/app/service/sheet.service';
 import { EnrollComponent } from '../enroll/enroll.component';
 import { InviteComponent } from '../invite/invite.component';
 import { JoinRoomComponent } from '../join-room/join-room.component';
@@ -34,7 +36,8 @@ export class HeaderComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private roomService: RoomService,
     private dialogService: DialogService,
-    private router: Router
+    private router: Router,
+    private sheetService:SheetService
   ) {
     this.store.select('user').subscribe((user) => {
       this.user = user;
@@ -86,15 +89,22 @@ export class HeaderComponent implements OnInit {
     //   this.dialog.open(EnrollComponent,dialogConfig);
     this.roomService.enrollSheet(this.id).subscribe(
       (res) => {
+        this.disable= true;
+        this.sheetService.getSheet().subscribe(sheets=>{
+          this.store.dispatch(initialSheets({sheets}));
+        })
+
         this.dialogService.confirmDialog({
           color: 'green',
           message: `You are now enrolled in this sheet`,
+          load:false
         });
       },
       (err) =>
         this.dialogService.confirmDialog({
           color: 'red',
           message: `Something went wrong`,
+          load:false
         })
     );
   }
@@ -109,6 +119,7 @@ export class HeaderComponent implements OnInit {
         this.dialogService.confirmDialog({
           color: 'green',
           message: `Your room ${room.room_code} is created successfully`,
+          load:false
         });
         this.router.navigate(['/room/' + room.room_code],{state:code});
       },
@@ -116,7 +127,8 @@ export class HeaderComponent implements OnInit {
         this.dialogService.confirmDialog({
           color: 'red',
           message: `Please Enroll the sheet first`,
-          id:this.id
+          id:this.id,
+          load:false
         });
       }
     );

@@ -18,6 +18,8 @@ import { LoginServiceService } from 'src/app/service/login-service.service';
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
   // showSpinner=false;
+  error= false;
+  errorValue="";
   constructor(
     private loginService: LoginServiceService,
     private dialog: MatDialog,
@@ -33,7 +35,15 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
+      password: new FormControl('', [Validators.required,Validators.minLength(6)]),
+    });
+    this.loginForm.get("email")?.valueChanges.subscribe(val=>{
+      this.error=false;
+      this.errorValue="";
+    });
+    this.loginForm.get("password")?.valueChanges.subscribe(val=>{
+      this.error=false;
+      this.errorValue="";
     });
   }
 
@@ -48,34 +58,40 @@ export class LoginPageComponent implements OnInit {
       this.loginService.generateToken(cred).subscribe(
         (response:LoginResponse) => {
 
-
+          this.loginService.doLoginUser(response);
           this.loginService.login().subscribe(
             (user) => {
+              if(user.is_verified){
+                this.dialog.closeAll();
+                this.store.dispatch(addUser({ user }));
+                this.loginService.setUserInLocalStorage(user);
+              }
+              else{
+                this.error= true;
+                this.errorValue="Please verify your email first"
+              }
 
-
-              this.dialog.closeAll();
-
-
-              this.store.dispatch(addUser({ user }));
-              this.loginService.setUserInLocalStorage(user);
             },
             (error) => {
-
               this.store.dispatch(removeUser());
-              this.dialogService.confirmDialog({color:"red",message:"Please Enter correct Email and Password"});
-
+              // this.dialogService.confirmDialog({color:"red",message:"Please Enter correct Email and Password"});
+              this.error= true;
+              this.errorValue=error.error.detail
             }
           );
         },
         (error) => {
+          console.log(error);
 
           this.store.dispatch(removeUser());
           // this.showSpinner= false;
-          this.dialogService.confirmDialog({color:"red",message:"Please Enter correct Email and Password"});
+          this.error= true;
+          this.errorValue=error.error.detail;
         }
       );
     }
   }
+
 
   onSignUp() {
     if (this.loginForm.valid) {
@@ -90,7 +106,7 @@ export class LoginPageComponent implements OnInit {
         (response) => {
 
           // this.showSpinner= false;
-          this.dialogService.confirmDialog({color:"green",message:"Your account is created successfully"});
+          this.dialogService.confirmDialog({color:"green",message:"Your account is created successfully",load:false});
           this.dialogRef.close();
 
 
@@ -98,7 +114,9 @@ export class LoginPageComponent implements OnInit {
         },
         (error) => {
           // this.showSpinner= false;
-          this.dialogService.confirmDialog({color:"red",message:"Something went wrong"});
+          console.log(error);
+          this.error= true;
+          this.errorValue=error.error.email;
         }
       );
     }

@@ -25,14 +25,7 @@ export class LoginServiceService {
   }
 
   generateToken(cred: Cred):Observable<LoginResponse>{
-     return this.http.post<LoginResponse>(this.loginUrl, cred).pipe(
-      tap(tokens => this.doLoginUser(tokens)),
-
-      catchError(error =>{
-        return of({"access":"none","refresh":"none"});
-
-      })
-    );
+     return this.http.post<LoginResponse>(this.loginUrl, cred);
 
   }
 

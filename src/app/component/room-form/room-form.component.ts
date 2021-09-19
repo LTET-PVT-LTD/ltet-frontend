@@ -47,6 +47,7 @@ export class RoomFormComponent implements OnInit {
           this.dialogService.confirmDialog({
             color: 'green',
             message: `Your room ${room.room_code} is created successfully`,
+            load:false
           });
           this.router.navigate(["/room/"+room.room_code],{state:code});
         },
@@ -54,7 +55,8 @@ export class RoomFormComponent implements OnInit {
           this.dialogService.confirmDialog({
             color:"red",
             message: `Please Enroll the ${this.roomForm.value.sheetForm.sheet_name} sheet first`,
-            id:this.roomForm.value.sheetForm.id
+            id:this.roomForm.value.sheetForm.id,
+            load:false
           });
         }
       );

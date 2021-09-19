@@ -7,7 +7,11 @@
         <div *ngIf="loaderService.isLoading | async" class="load-container">
           <app-spinner></app-spinner>
         </div>
-        <div class="card-container">
+        <div *ngIf="userRooms.length==0" class="empty-container">
+          <div> No Room is Present</div>
+          <img src="../../../assets/empty.png">
+        </div>
+        <div *ngIf="userRooms.length>0" class="card-container">
          <app-room-card *ngFor="let room of userRooms" [room]="room"></app-room-card>
 
         </div>

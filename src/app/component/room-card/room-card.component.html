@@ -11,7 +11,7 @@
       <div class="icon-exp-class">
         <mat-icon  >person</mat-icon>
         <div class="text">Creator:</div>
-        <div class="name">{{room.priviliged_room_users[0].email}}</div>
+        <div *ngIf="room.priviliged_room_users" class="name">{{room.priviliged_room_users[0].email}}</div>
       </div>
 
       <div class="divider"></div>

@@ -9,11 +9,11 @@
         mat-raised-button
         color="primary"
         (click)="enroll()"
-        [mat-dialog-close]="true"
+
       >
         Enroll
       </button>
-      <button mat-raised-button [mat-dialog-close]="true">ok</button>
+      <button mat-raised-button (click)="close()" >ok</button>
     </div>
   </div>
 

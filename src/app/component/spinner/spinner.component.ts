@@ -16,9 +16,9 @@ export class SpinnerComponent implements OnInit {
       position: 'absolute',
       'z-index': 100,
       top: 0,
-      'margin-top': '10vh',
+      // 'margin-top': '10vh',
       width: '100%',
-      height: '90%',
+      height: '100%',
       'background-color': 'rgba(255,255,255,0.8)',
     };
   }

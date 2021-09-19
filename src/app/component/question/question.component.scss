@@ -33,12 +33,14 @@
 
   .title{
     width:83%;
-    height:50%;
+    height:100%;
 
     font-size: 1.2rem;
     overflow: hidden;
     cursor: pointer;
    white-space: nowrap;
+   display: flex;
+   align-items: center;
 
     text-overflow: ellipsis;
 
@@ -99,6 +101,7 @@
   font-family: 'Material Icons';
   margin-left: 0.7rem;
   margin-top: 0.7rem;
+  z-index: 1000;
 
 }
 

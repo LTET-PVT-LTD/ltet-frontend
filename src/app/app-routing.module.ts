@@ -12,19 +12,43 @@ import { SheetComponent } from './component/sheet/sheet.component';
 import { Sheet } from './reducer/sheet.reducer';
 
 const routes: Routes = [
-  {path:"",component:HomeComponent,pathMatch:"full"},
-  {path:"login",component:LoginPageComponent,pathMatch:"full"},
-  {path:"sheet/:id",component:SheetContainerComponent,pathMatch:"full",data:Sheet},
-  {path:"room",canActivate:[AuthGuard],component:RoomContainerComponent,pathMatch:"full"},
-  {path:"room/:code",canActivate:[AuthGuard],component:RoomPageComponent,pathMatch:"full"},
-  {path:"learning",canActivate:[AuthGuard],component:MyLearningComponent,pathMatch:"full"},
-  {path:"learning/:id",canActivate:[AuthGuard],component:LearningContainerComponent,pathMatch:"full"},
-  {path:"**",redirectTo:""},
-
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'login', component: LoginPageComponent, pathMatch: 'full' },
+  {
+    path: 'sheet/:id',
+    component: SheetContainerComponent,
+    pathMatch: 'full',
+    data: Sheet,
+  },
+  {
+    path: 'room',
+    canActivate: [AuthGuard],
+    component: RoomContainerComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'room/:code',
+    canActivate: [AuthGuard],
+    component: RoomPageComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'learning',
+    canActivate: [AuthGuard],
+    component: MyLearningComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'learning/:id',
+    canActivate: [AuthGuard],
+    component: LearningContainerComponent,
+    pathMatch: 'full',
+  },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

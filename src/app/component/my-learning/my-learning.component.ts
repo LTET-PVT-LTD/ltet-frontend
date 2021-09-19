@@ -22,7 +22,7 @@ export class MyLearningComponent implements OnInit {
     })
 
     this.store.select("user").subscribe(user=>{
-      console.log(user);
+
     })
 
 
@@ -38,8 +38,7 @@ export class MyLearningComponent implements OnInit {
 
 
   moveToSheet(id:number,sheet:Sheet){
-    console.log(id);
-    console.log(sheet);
+
     this.router.navigateByUrl("/learning/"+id);
   }
 }

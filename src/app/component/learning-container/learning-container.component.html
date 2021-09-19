@@ -9,9 +9,6 @@
   </div>
 </div> -->
 
-
-
-
 <!-- <div class="container">
   <app-side-bar [selected]="'sheets'"></app-side-bar>
   <div class="right">
@@ -34,28 +31,34 @@
   </div>
 </div> -->
 
-
 <div class="container">
   <app-side-bar [selected]="'learning'"></app-side-bar>
   <div class="right">
-    <app-header></app-header>
+    <app-header [title]="sheet.sheet_name"></app-header>
     <mat-tab-group mat-stretch-tabs>
-      <mat-tab *ngIf="sheet" label={{sheet.sheet_name}}>
+      <mat-tab *ngIf="sheet" label="{{ sheet.sheet_name }}">
         <div *ngIf="isLoading" class="load-container">
           <app-spinner></app-spinner>
         </div>
         <div class="sheet-container">
+          <div *ngIf="userRoom.users_questions.length==0" class="empty-container">
+            <div> You have not enrolled the sheet yet!</div>
+            <img src="../../../assets/empty.png">
+          </div>
           <div class="users" *ngFor="let users of userRoom.users_questions">
-            <div *ngIf="users.user_email==user.email && id==userRoom.sheet.id">
-              <app-question  *ngFor="let question of users.questions" [question]="question" [personal]="true"></app-question>
+
+            <div
+              *ngIf="users.user_email == user.email && id == userRoom.sheet.id&& users.questions.length>0"
+            >
+              <app-question
+                *ngFor="let question of users.questions"
+                [question]="question"
+                [personal]="true"
+              ></app-question>
             </div>
-
-
+          </div>
         </div>
-        </div>
-
       </mat-tab>
-
     </mat-tab-group>
   </div>
 </div>

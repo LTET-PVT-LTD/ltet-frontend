@@ -27,10 +27,10 @@
             <div class="form-group">
               <input type="password" formControlName="password"  />
               <label>Enter Password</label>
-              <span *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color:red">Please Enter Password</span>
+              <span *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color:red">Enter Password with minimum length 6 </span>
             </div>
             <label class="check-box">
-              <input id="checkbox" type="checkbox" checked="checked" name="remember"> Remember me
+              <span *ngIf="error" style="color:red">{{errorValue}}</span>
             </label>
           <button class="login-btn">Sign In</button>
           </form>
@@ -61,10 +61,10 @@
             <div class="form-group">
               <input type="password" formControlName="password"  />
               <label>Enter Password</label>
-              <span *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color:red">Please Enter Password</span>
+              <span *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color:red">Enter password with minimum length 6</span>
             </div>
             <label class="check-box">
-              <input id="checkbox" type="checkbox" checked="checked" name="remember"> Remember me
+              <span *ngIf="error" style="color:red">{{errorValue}}</span>
             </label>
           <button class="login-btn">Sign Up</button>
           </form>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from './model/user.model';
@@ -9,7 +9,7 @@ import { User } from './model/user.model';
 })
 export class AuthGuard implements CanActivate {
   private user!:User;
-  constructor(private store:Store<{user:User}>){
+  constructor(private store:Store<{user:User}>, private router:Router){
     this.store.select("user").subscribe(user=>{
       this.user= user;
     })
@@ -18,7 +18,14 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.user.email!=""?true:false;
+      if (this.user.email!="") {
+        return true;
+      } else {
+        this.router.navigate(['']);
+      }
+      return false;
+
+
   }
 
 }

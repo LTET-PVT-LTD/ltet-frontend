@@ -5,7 +5,8 @@ import { User } from "../model/user.model";
 
 export const initialState:User={
   email:"",
-  id:0
+  id:0,
+  is_verified:false
 }
 
 export const _user= createReducer(
@@ -14,7 +15,7 @@ export const _user= createReducer(
     return user;
   }),
   on(removeUser,(state) =>{
-    return {email:"",id:0}
+    return {email:"",id:0,is_verified:false}
   }),
 
 

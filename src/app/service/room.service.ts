@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { addRoom } from '../action/room.action';
 import { QuestionStatus } from '../model/question_status.model';
 import { Room } from '../model/room.model';
@@ -20,6 +20,7 @@ export class RoomService {
   enrollUrl = 'https://ltet-backend.herokuapp.com/sheets/enrollment/';
   joinRoomUrl = 'https://ltet-backend.herokuapp.com/sheet_room/join/';
   token!: string;
+  isRunning = new BehaviorSubject<boolean>(true);
 
   constructor(private http: HttpClient, private store:Store<{room:Room}>, private dialogService:DialogService) {
     this.getToken();
@@ -134,6 +135,7 @@ export class RoomService {
   }
 
   myLearning(user:User,id:any){
+    this.isRunning.next(true);
 
     let currRooms:Room[];
     var code="";
@@ -153,18 +155,24 @@ export class RoomService {
     if(code!=""){
 
       return this.getRoom(code).subscribe(room=>{
+        this.isRunning.next(false);
         this.store.dispatch(addRoom({room}))
       })
      }
 
      return  this.createRoom(id,true).subscribe(room=>{
-      this.store.dispatch(addRoom({room}))
-     },err=>{
 
+      return this.getRoom(room.room_code).subscribe(room=>{
+        this.isRunning.next(false);
+        this.store.dispatch(addRoom({room}))
+      })
+     },err=>{
+        this.isRunning.next(false);
         this.dialogService.confirmDialog({
           color:"red",
           message: `Please Enroll the  sheet first`,
-          id:id
+          id:id,
+          load:false
         });
 
      })
