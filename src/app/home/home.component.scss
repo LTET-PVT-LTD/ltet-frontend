@@ -1,0 +1,15 @@
+.navBar{
+    min-height: 56px;
+    background-color: #101213;
+    display: flex;
+    position: relative;
+    align-items: center;
+
+    button{
+        color: white;
+    border: 0.01px solid gray;
+    padding: 3px 15px 3px 15px;
+    font-size: 12px;
+    margin-right: 20px;
+    }
+}
