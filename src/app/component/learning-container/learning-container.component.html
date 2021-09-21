@@ -51,6 +51,7 @@
               *ngIf="users.user_email == user.email && id == userRoom.sheet.id&& users.questions.length>0"
             >
               <app-question
+               
                 *ngFor="let question of users.questions"
                 [question]="question"
                 [personal]="true"

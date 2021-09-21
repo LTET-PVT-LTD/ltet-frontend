@@ -172,7 +172,8 @@ export class RoomService {
           color:"red",
           message: `Please Enroll the  sheet first`,
           id:id,
-          load:false
+          load:false,
+          enroll:true
         });
 
      })

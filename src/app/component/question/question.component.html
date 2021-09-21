@@ -5,11 +5,12 @@
   matBadgePosition="above before"
 ></span>
 <div
+    @rightToLeft
   class="zigzag question"
   matRipple
   [ngStyle]="strike == 3 ? styleObject() : {}"
 >
-  <div class="row" >
+  <div  class="row" >
     <a
       class="title"
       href="{{question.question.question_url}}" target="_blank"

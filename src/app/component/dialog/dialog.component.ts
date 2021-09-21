@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { addRoom } from 'src/app/action/room.action';
 import { initialSheets } from 'src/app/action/sheet.action';
 import { Sheet } from 'src/app/model/sheet.model';
 import { User } from 'src/app/model/user.model';
@@ -34,26 +35,57 @@ export class DialogComponent implements OnInit {
         this.store.dispatch(initialSheets({sheets}));
       })
       this.currDialog.close();
-      this.dialogService.confirmDialog({
-        color:"green",
-        message: `You are now enrolled in this sheet`,
-        load:true
-      });
+      if(this.data.createRoom){
+        this.dialogService.confirmDialog({
+          color:"green",
+          id:this.data.id,
+          message: `You are now enrolled in this sheet`,
+          load:false,
+          createRoom:true,
+          enroll:false
+        });
+      }
+      else{
+        this.dialogService.confirmDialog({
+          color:"green",
+          message: `You are now enrolled in this sheet`,
+          load:true,
+          enroll:false
+        });
+      }
+    
 
 
     }, err=>
     this.dialogService.confirmDialog({
       color:"red",
       message: `Something went wrong`,
-      load:false
+      load:false,
+      enroll:false
     }))
   }
 
   close(){
     this.currDialog.close();
-      if(this.data.load){
+    if(this.data.createRoom){
+      this.roomService.createRoom(this.data.id,false).subscribe(
+        (room) => {
+          this.store.dispatch(addRoom({room}));
+          let code:any = room.room_code;
+          this.dialogService.confirmDialog({
+            color: 'green',
+            message: `Your room ${room.room_code} is created successfully`,
+            load:false
+          });
+          this.router.navigate(["/room/"+room.room_code],{state:code});
+        }
+      );
+      return;
+    }
+     else if(this.data.load){
         window.location.reload();
       }
+
 
 
   }

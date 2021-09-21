@@ -124,11 +124,13 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['/room/' + room.room_code],{state:code});
       },
       (error) => {
+        this.dialog.closeAll();
         this.dialogService.confirmDialog({
           color: 'red',
           message: `Please Enroll the sheet first`,
           id:this.id,
-          load:false
+          load:false,
+          enroll:true
         });
       }
     );

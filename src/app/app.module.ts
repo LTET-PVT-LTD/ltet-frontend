@@ -51,7 +51,7 @@ import { LearningContainerComponent } from './component/learning-container/learn
 import {MatRippleModule} from '@angular/material/core';
 import {MatBadgeModule} from '@angular/material/badge';
 import { InterceptorService } from './loader/interceptor.service';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LandingPageComponent } from './component/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +81,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
   entryComponents:[LoginPageComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,

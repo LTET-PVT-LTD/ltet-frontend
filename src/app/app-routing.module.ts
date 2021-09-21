@@ -9,7 +9,7 @@ import { RoomContainerComponent } from './component/room-container/room-containe
 import { RoomPageComponent } from './component/room-page/room-page.component';
 import { SheetContainerComponent } from './component/sheet-container/sheet-container.component';
 import { SheetComponent } from './component/sheet/sheet.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LandingPageComponent } from './component/landing-page/landing-page.component';
 import { Sheet } from './reducer/sheet.reducer';
 
 const routes: Routes = [

@@ -52,11 +52,14 @@ export class RoomFormComponent implements OnInit {
           this.router.navigate(["/room/"+room.room_code],{state:code});
         },
         (error) => {
+          this.dialog.closeAll();
           this.dialogService.confirmDialog({
             color:"red",
             message: `Please Enroll the ${this.roomForm.value.sheetForm.sheet_name} sheet first`,
             id:this.roomForm.value.sheetForm.id,
-            load:false
+            load:false,
+            createRoom:true,
+            enroll:true
           });
         }
       );

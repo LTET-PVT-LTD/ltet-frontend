@@ -2,5 +2,7 @@ export interface Dialog{
     color:string,
     message : string,
     id?:number,
-    load:boolean
+    load:boolean,
+    createRoom?:boolean,
+    enroll?:boolean
 }

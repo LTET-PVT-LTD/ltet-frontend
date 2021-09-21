@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -16,6 +17,7 @@ import { SheetService } from 'src/app/service/sheet.service';
   selector: 'app-learning-container',
   templateUrl: './learning-container.component.html',
   styleUrls: ['./learning-container.component.scss'],
+
 })
 export class LearningContainerComponent implements OnInit, OnDestroy {
   id: any;

@@ -21,15 +21,19 @@ export class RoomPageComponent implements OnInit,OnDestroy {
   code!:string|any;
   currUser!:User;
   users_question:UserQuestion[] = [];
-  isLoading=true;
+  isLoading!:boolean;
 
   constructor(private router:Router,private store:Store<{room:Room, user:User}>, private roomService:RoomService, public loaderService:LoaderService, private activatedRoute:ActivatedRoute){
+    this.roomService.isRunning.next(true);
     this.activatedRoute.params.subscribe((param:Params) =>{
       this.code = param.code;
     });
     this.roomService.getRoom(this.code).subscribe(room=>{
-      this.isLoading=false;
+      this.roomService.isRunning.next(false);
       this.store.dispatch(addRoom({room}));
+    })
+    this.roomService.isRunning.subscribe(res =>{
+      this.isLoading= res;
     })
 
     this.store.select("room").subscribe(room=>{

@@ -16,7 +16,7 @@ export class InviteComponent implements OnInit {
 
   inviteForm!:FormGroup;
   code!:string;
-
+  isLoading = false;
   constructor(private dialog:MatDialog, private roomService:RoomService,private router:Router,private dialogService:DialogService,private store:Store<{room:Room}>) {
     this.store.select('room').subscribe(room=>{
       this.code= room.room_code;
@@ -31,14 +31,15 @@ export class InviteComponent implements OnInit {
 
   onSubmit(){
     if(this.inviteForm.valid){
-
+    this.roomService.isRunning.next(true);
       this.roomService.inviteRoom(this.inviteForm, this.code).subscribe(res=>{
-
+        this.roomService.isRunning.next(false);
         this.dialog.closeAll();
         this.dialogService.confirmDialog({color:"green",message:"Email sent successfully",load:false});
 
       },
       err=>{
+        this.roomService.isRunning.next(false);
         this.dialog.closeAll();
        this.dialogService.confirmDialog({'color':"red","message":"You are alread invited this user",load:false})
       });

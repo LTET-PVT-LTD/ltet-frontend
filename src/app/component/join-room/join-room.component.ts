@@ -34,7 +34,8 @@ export class JoinRoomComponent implements OnInit {
         this.dialog.closeAll();
       },
       err=>{
-       this.dialogService.confirmDialog({'color':"red","message":"You are already present in this room",load:false})
+        this.dialog.closeAll();
+       this.dialogService.confirmDialog({'color':"red","message":err.error.Error,load:false})
       });
 
     }
