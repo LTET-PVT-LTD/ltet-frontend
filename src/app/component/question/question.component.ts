@@ -10,15 +10,7 @@ import { RoomService } from 'src/app/service/room.service';
   selector: 'app-question',
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.scss'],
-  animations:[
-    trigger('rightToLeft',[
-      transition('void=>*',[
-        style({"transform":"translateX(100%)",}),
-     
-      animate("1.25s linear")
-    ]),
-    ])
-  ]
+
 })
 export class QuestionComponent implements OnInit {
   @Input() question!: QuestionStatus;

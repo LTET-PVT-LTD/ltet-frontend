@@ -3,7 +3,7 @@
 
   <div class="email">
     <mat-icon *ngIf="user.email != ''" class="icon">person</mat-icon>
-    <div>{{ user.email }}</div>
+    <div matTooltip={{user.email}}>{{ user.email }}</div>
   </div>
   <div class="text-container">
     <div

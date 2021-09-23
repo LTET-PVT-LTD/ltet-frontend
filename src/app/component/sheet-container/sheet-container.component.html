@@ -9,26 +9,21 @@
   </div>
 </div> -->
 
-
-
-
 <div class="container">
   <app-side-bar [selected]="'sheets'"></app-side-bar>
   <div class="right">
     <app-header [title]="sheet.sheet_name"></app-header>
     <mat-tab-group mat-stretch-tabs>
-      <mat-tab  label={{sheet.sheet_name}}>
-
-        <div class="sheet-container">
+      <mat-tab label="{{ sheet.sheet_name }}">
+        <div  @rightToLeft class="sheet-container">
           <div *ngFor="let question of sheet.questions">
-            <app-sheet [question]="question"></app-sheet>
+         
+              <app-sheet [question]="question" ></app-sheet>
+            
+            
+          </div>
         </div>
-        </div>
-
       </mat-tab>
-
-      </mat-tab-group>
+    </mat-tab-group>
   </div>
 </div>
-
-

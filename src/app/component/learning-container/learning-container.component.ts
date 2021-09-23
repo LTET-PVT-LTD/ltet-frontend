@@ -1,4 +1,4 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -17,6 +17,20 @@ import { SheetService } from 'src/app/service/sheet.service';
   selector: 'app-learning-container',
   templateUrl: './learning-container.component.html',
   styleUrls: ['./learning-container.component.scss'],
+  animations:[
+    trigger('rightToLeft',[
+
+      transition(':enter', [
+        query(':enter', [
+          style({"transform":"translateX(100%)"}),
+            stagger('300ms', [
+              animate('500ms ease',   style({"transform":"translateX(0)",}),
+              )
+            ])
+        ])
+    ])
+    ])
+  ]
 
 })
 export class LearningContainerComponent implements OnInit, OnDestroy {
