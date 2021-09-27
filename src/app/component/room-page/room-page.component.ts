@@ -59,16 +59,16 @@ export class RoomPageComponent implements OnInit,OnDestroy {
   ngOnInit(){}
 
 
-  moveToInProgress(questionId:number,status:number){
-    this.roomService.changeStatus(questionId,status).subscribe(res=>{
+  // moveToInProgress(questionId:number,status:number){
+  //   this.roomService.changeStatus(questionId,status).subscribe(res=>{
 
-    })
-  }
-  moveToDone(questionId:number,status:number){
-      this.roomService.changeStatus(questionId,status).subscribe(res=>{
+  //   })
+  // }
+  // moveToDone(questionId:number,status:number){
+  //     this.roomService.changeStatus(questionId,status).subscribe(res=>{
 
-    })
-  }
+  //   })
+  // }
 
   ngOnDestroy(){
     this.store.dispatch(removeRoom());

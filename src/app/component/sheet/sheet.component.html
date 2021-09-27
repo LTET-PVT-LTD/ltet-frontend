@@ -2,4 +2,5 @@
   <a matRipple href="{{question.question_url}}" target="_blank" class="question zigzag">
     {{question.question_description}}
   </a>
+  <button *ngIf="question.category" mat-raised-button >{{question.category.name}}</button>
 </div>

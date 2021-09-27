@@ -15,7 +15,7 @@ HttpClient;
 })
 export class LoginServiceService {
   signUpUrl = 'https://ltet-backend.herokuapp.com/accounts/register/';
-  loginUrl = 'https://ltet-backend.herokuapp.com/accounts/api/token/';
+  loginUrl = 'https://ltet-backend.herokuapp.com/accounts/login/';
   token = '';
 
   currentUser!: Cred;
@@ -39,7 +39,7 @@ export class LoginServiceService {
     this.removeUserFromLocalStorage();
   }
 
-  doLoginUser(tokens: any) {
+  doLoginUser(tokens: LoginResponse) {
     this.storeToken(tokens);
   }
 
@@ -53,8 +53,8 @@ export class LoginServiceService {
   }
 
   storeToken(tokens: any) {
-    localStorage.setItem('access', tokens.access);
-    localStorage.setItem('refresh', tokens.refresh);
+    localStorage.setItem('access', tokens.tokens.access);
+    localStorage.setItem('refresh', tokens.tokens.refresh);
     this.getToken();
   }
 

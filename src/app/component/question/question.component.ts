@@ -14,14 +14,23 @@ import { RoomService } from 'src/app/service/room.service';
 })
 export class QuestionComponent implements OnInit {
   @Input() question!: QuestionStatus;
-  strike = 1;
+  strike = false;
+  flag= false;
   alreadyClicked = false;
 
   @Input()personal!:boolean;
 
   constructor(private roomService: RoomService) {
     setTimeout(() => {
-      this.strike = this.question.status;
+      // this.strike = this.question.status;
+      for(let i of this.question.status){
+        if(i==3){
+          this.strike=true;
+        }
+        if(i==2){
+          this.flag=true;
+        }
+      }
     }, 50);
   }
 
@@ -31,7 +40,7 @@ export class QuestionComponent implements OnInit {
     if (this.alreadyClicked == false) {
       this.alreadyClicked = true;
       this.statusChange(status);
-      this.roomService.changeStatus(questionId, this.strike).subscribe(
+      this.roomService.changeStatus(questionId,  this.valueChecker()).subscribe(
         (res) => {
           console.log(res);
           this.alreadyClicked = false;
@@ -48,7 +57,7 @@ export class QuestionComponent implements OnInit {
     if (this.alreadyClicked == false) {
       this.alreadyClicked = true;
       this.statusChange(status);
-      this.roomService.changeStatus(questionId, this.strike).subscribe(
+      this.roomService.changeStatus(questionId, this.valueChecker()).subscribe(
         (res) => {
 
           this.alreadyClicked = false;
@@ -62,19 +71,34 @@ export class QuestionComponent implements OnInit {
   }
 
   statusChange(status:number) {
-    if(status==1&&this.strike==1){
-      this.strike=3;
+    if(status==1&&this.strike==false){
+      this.strike=true;
     }
-    else if(status==3&&this.strike==3){
-      this.strike=1;
+    else if(status==3&&this.strike==true){
+      this.strike=false;
     }
-    else if(status==2&&this.strike==2){
-      this.strike= 1;
+    else if(status==2&&this.flag==true){
+      this.flag= false;
     }
-    else{
-      this.strike=status
+    else if(status==2){
+      this.flag = true;
+    }
+    else if(status==3){
+      this.strike= true;
     }
 
+  }
+
+  valueChecker(){
+    let arr=[];
+    if(this.strike==true){
+      arr.push(3);
+    }
+    else{
+      arr.push(1);
+    }
+    if(this.flag==true) arr.push(2);
+    return arr;
   }
 
   styleObject() {

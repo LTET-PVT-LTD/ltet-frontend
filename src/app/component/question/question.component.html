@@ -1,5 +1,5 @@
 <span
- *ngIf="strike==2"
+ *ngIf="flag==true"
   class=".mat-badge-content"
   matBadge="star"
   matBadgePosition="above before"
@@ -8,7 +8,7 @@
   
   class="zigzag question"
   matRipple
-  [ngStyle]="strike == 3 ? styleObject() : {}"
+  [ngStyle]="strike == true ? styleObject() : {}"
 >
   <div  class="row" >
     <a
@@ -24,10 +24,10 @@
 
     <div *ngIf="personal"class="right">
       <div (click)="moveToFlag(question.id,2)" class="heart">
-        <mat-icon [ngStyle]="strike == 2 ? colorFill() :{}">{{strike==2?'favorite':'favorite_border'}}</mat-icon>
+        <mat-icon [ngStyle]="flag == true ? colorFill() :{}">{{flag==true?'favorite':'favorite_border'}}</mat-icon>
       </div>
       <div (click)="moveToDone(question.id, 3)" class="flag">
-        <mat-icon [ngStyle]="strike == 3 ? colorFill() :{}">{{strike==3?'check_box':'check_box_outline_blank'}}</mat-icon>
+        <mat-icon [ngStyle]="strike == true ? colorFill() :{}">{{strike==true?'check_box':'check_box_outline_blank'}}</mat-icon>
       </div>
     </div>
   </div>

@@ -5,6 +5,7 @@ export interface QuestionStatus{
   id:number,
   user:User,
   question:Question,
-  status:number
+  status:number[],
+  created_at:string
 
 }

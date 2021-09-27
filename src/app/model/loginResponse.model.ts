@@ -1,4 +1,8 @@
 export interface LoginResponse{
- access:string,
- refresh:string
+ email:string,
+ tokens:{
+    access:string,
+    refresh:string
+ }   
+
 }

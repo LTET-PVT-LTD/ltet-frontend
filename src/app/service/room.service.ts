@@ -107,15 +107,18 @@ export class RoomService {
     return this.http.post<Room>(url, room, options);
   }
 
-  changeStatus(questionId:number,status:number):Observable<QuestionStatus>{
+  changeStatus(questionId:number,status:number[]):Observable<QuestionStatus>{
     this.getToken();
     let url ="https://ltet-backend.herokuapp.com/sheet_room/update_status/";
     let headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.token,
     });
-    let room = new FormData();
-    room.append("question_id",""+questionId);
-    room.append("status",""+status);
+    let room = {
+      "question_id":questionId,
+      "status":status
+    }
+    // room.append("question_id",""+questionId);
+    // room.append("status",""+status);
 
 
     let options = { headers: headers };
