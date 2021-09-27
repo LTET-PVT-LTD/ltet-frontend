@@ -23,7 +23,7 @@ export class RoomCardComponent implements OnInit {
 
   enterRoom(){
     let code:any = this.room.room_code
-    this.router.navigateByUrl("/room/"+this.room.room_code,{state:code})
+    this.router.navigateByUrl("/room/"+this.room.room_code);
   }
 
 }

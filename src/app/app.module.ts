@@ -52,6 +52,7 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatBadgeModule} from '@angular/material/badge';
 import { InterceptorService } from './loader/interceptor.service';
 import { LandingPageComponent } from './component/landing-page/landing-page.component';
+import { RedirectComponent } from './component/redirect/redirect.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { LandingPageComponent } from './component/landing-page/landing-page.comp
     QuestionComponent,
     MyLearningComponent,
     LearningContainerComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    RedirectComponent
 
   ],
   entryComponents:[LoginPageComponent],
