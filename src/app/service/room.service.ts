@@ -71,14 +71,15 @@ export class RoomService {
     return this.http.get<Room>(url, options);
   }
 
-  joinRoom(joinForm:FormGroup):Observable<Room>{
+  joinRoom(code:any):Observable<Room>{
     this.getToken();
     let url ="https://ltet-backend.herokuapp.com/sheet_room/join/";
     let headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.token,
     });
     let room = new FormData();
-    room.append('invite_code', joinForm.value.code);
+    room.append('invite_code', code);
+    room.append('is_private', ""+"false");
 
 
     let options = { headers: headers };

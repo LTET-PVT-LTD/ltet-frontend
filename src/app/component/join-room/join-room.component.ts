@@ -28,7 +28,7 @@ export class JoinRoomComponent implements OnInit {
 
   onSubmit(){
     if(this.joinForm.valid){
-      this.roomService.joinRoom(this.joinForm).subscribe(room=>{
+      this.roomService.joinRoom(this.joinForm.value.code).subscribe(room=>{
         this.store.dispatch(addRoom({room}));
         this.router.navigateByUrl("/room/"+room.room_code)
         this.dialog.closeAll();

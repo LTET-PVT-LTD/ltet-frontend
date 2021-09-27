@@ -11,6 +11,7 @@ import { SheetContainerComponent } from './component/sheet-container/sheet-conta
 import { SheetComponent } from './component/sheet/sheet.component';
 import { LandingPageComponent } from './component/landing-page/landing-page.component';
 import { Sheet } from './reducer/sheet.reducer';
+import { RedirectComponent } from './component/redirect/redirect.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -50,6 +51,12 @@ const routes: Routes = [
     component: LearningContainerComponent,
     pathMatch: 'full',
   },
+  {
+    path: 'redirect/:code',
+    component: RedirectComponent,
+    pathMatch: 'full',
+  },
+
  
   { path: '**', redirectTo: '' },
 

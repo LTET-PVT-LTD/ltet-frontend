@@ -7,6 +7,7 @@ import { LoaderService } from 'src/app/loader/loader.service';
 import { Room } from 'src/app/model/room.model';
 import { User } from 'src/app/model/user.model';
 import { UserQuestion } from 'src/app/model/user_question.model';
+import { DialogService } from 'src/app/service/dialog.service';
 import { RoomService } from 'src/app/service/room.service';
 
 
@@ -22,8 +23,9 @@ export class RoomPageComponent implements OnInit,OnDestroy {
   currUser!:User;
   users_question:UserQuestion[] = [];
   isLoading!:boolean;
+  roomCode:any="";
 
-  constructor(private router:Router,private store:Store<{room:Room, user:User}>, private roomService:RoomService, public loaderService:LoaderService, private activatedRoute:ActivatedRoute){
+  constructor(private router:Router,private store:Store<{room:Room, user:User}>, private roomService:RoomService, public loaderService:LoaderService, private activatedRoute:ActivatedRoute, private dialogService:DialogService){
     this.roomService.isRunning.next(true);
     this.activatedRoute.params.subscribe((param:Params) =>{
       this.code = param.code;
@@ -53,10 +55,28 @@ export class RoomPageComponent implements OnInit,OnDestroy {
 
 
     })
+    this.roomCode =this.router.getCurrentNavigation()?.extras.state;
 
 
   }
-  ngOnInit(){}
+  ngOnInit(){
+
+   
+  
+    if(this.roomCode!=undefined){
+      console.log(this.roomCode);
+      this.roomService.joinRoom(this.roomCode).subscribe(room=>{
+        this.store.dispatch(addRoom({room}));
+        this.router.navigateByUrl("/room/"+room.room_code)
+       
+      },
+      err=>{
+       
+       this.dialogService.confirmDialog({'color':"red","message":err.error.Error,load:false})
+      });
+
+    }
+  }
 
 
   // moveToInProgress(questionId:number,status:number){
