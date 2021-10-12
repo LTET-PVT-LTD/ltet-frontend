@@ -14,6 +14,7 @@ import { RoomService } from 'src/app/service/room.service';
 })
 export class QuestionComponent implements OnInit {
   @Input() question!: QuestionStatus;
+  @Input()  page!:string;
   strike = false;
   flag= false;
   alreadyClicked = false;
@@ -107,13 +108,13 @@ export class QuestionComponent implements OnInit {
 
     };
   }
+  
+
 
   colorFill(){
     return {
       'color': '#00ff84',
     };
   }
-  hello(){
-    console.log("hello");
-  }
+ 
 }

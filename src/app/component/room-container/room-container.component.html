@@ -12,7 +12,7 @@
           <img src="../../../assets/empty.png">
         </div>
         <div *ngIf="userRooms.length>0" class="card-container">
-         <app-room-card *ngFor="let room of userRooms" [room]="room"></app-room-card>
+         <app-room-card @flip *ngFor="let room of userRooms" [room]="room"></app-room-card>
 
         </div>
       </mat-tab>

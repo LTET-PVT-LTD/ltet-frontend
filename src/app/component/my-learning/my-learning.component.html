@@ -12,8 +12,31 @@
           <div *ngIf="loaderService.isLoading | async" class="load-container">
             <app-spinner></app-spinner>
           </div>
-          <div *ngFor="let sheet of sheets">
-          <mat-card (click)="moveToSheet(sheet.id,sheet)">
+          <div *ngFor="let sheet of sheets;let i=index">
+          <mat-card @rightToLeft *ngIf="i%2==0"  (click)="moveToSheet(sheet.id,sheet)">
+            <div class="above">
+              <button mat-raised-button  color="primary">{{sheet.sheet_name}}</button>
+              <!-- <div class="code">{{sheet.sheet_name}}</div> -->
+              <img src="../../../assets/sheet.jpg" mat-card-image>
+              <div class="icon-exp-class">
+                <mat-icon>description</mat-icon>
+
+                <div class="name" matTooltip="{{sheet.sheet_description}}"  matTooltipClass="tooltip">{{sheet.sheet_description}}</div>
+              </div>
+              <div class="divider"></div>
+            </div>
+            <div class="below">
+              <div class="icon-exp-class">
+                <mat-icon>supervised_user_circle</mat-icon>
+                <div class="text">Users:</div>
+                <div class="name">{{sheet.enrolled_users_count}} </div>
+              </div>
+            </div>
+
+          </mat-card>
+
+
+          <mat-card @leftToRight *ngIf="i%2!=0"  (click)="moveToSheet(sheet.id,sheet)">
             <div class="above">
               <button mat-raised-button  color="primary">{{sheet.sheet_name}}</button>
               <!-- <div class="code">{{sheet.sheet_name}}</div> -->

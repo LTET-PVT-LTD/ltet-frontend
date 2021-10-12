@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { initialRooms } from 'src/app/action/user_room.action';
@@ -9,7 +10,15 @@ const rooms = require("../../../assets/rooms.json");
 @Component({
   selector: 'app-room-container',
   templateUrl: './room-container.component.html',
-  styleUrls: ['./room-container.component.scss']
+  styleUrls: ['./room-container.component.scss'],
+  animations:[
+    trigger('flip', [
+      transition('void=>*', [
+       style({"transform":"rotateY(180deg)"}),
+       animate(500)
+      ]),
+    ])
+  ]
 })
 export class RoomContainerComponent implements OnInit {
   userRooms:Room[]=[];

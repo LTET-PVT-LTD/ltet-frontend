@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -10,7 +11,21 @@ import { SheetService } from 'src/app/service/sheet.service';
 @Component({
   selector: 'app-my-learning',
   templateUrl: './my-learning.component.html',
-  styleUrls: ['./my-learning.component.scss']
+  styleUrls: ['./my-learning.component.scss'],
+  animations: [
+    trigger('rightToLeft', [
+      transition('void=>*', [
+       style({"transform":"translateX(-100%"}),
+       animate(500)
+      ]),
+    ]),
+    trigger('leftToRight', [
+      transition('void=>*', [
+       style({"transform":"translateX(100%"}),
+       animate(500)
+      ]),
+    ]),
+  ],
 })
 export class MyLearningComponent implements OnInit {
   id:any;

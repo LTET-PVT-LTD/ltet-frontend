@@ -1,3 +1,11 @@
+import {
+  animate,
+  query,
+  stagger,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { AfterViewChecked } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,44 +17,54 @@ import { User } from 'src/app/model/user.model';
 import { user } from 'src/app/reducer/user.reducer';
 import { SheetService } from 'src/app/service/sheet.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('rightToLeft', [
+      transition('void=>*', [
+       style({"transform":"translateX(-100%"}),
+       animate(500)
+      ]),
+    ]),
+    trigger('leftToRight', [
+      transition('void=>*', [
+       style({"transform":"translateX(100%"}),
+       animate(500)
+      ]),
+    ]),
+  ],
 })
-export class HomeComponent implements OnInit{
-  sheets!:Sheet[]
-  user!:User;
-  redirect:any;
-  constructor(private sheetService:SheetService,private store:Store<{sheet:Sheet[],user:User}>, private router:Router, public loaderService:LoaderService) {
-    this.store.select("sheet").subscribe(sheets=>{
+export class HomeComponent implements OnInit {
+  sheets!: Sheet[];
+  user!: User;
+  redirect: any;
+  constructor(
+    private sheetService: SheetService,
+    private store: Store<{ sheet: Sheet[]; user: User }>,
+    private router: Router,
+    public loaderService: LoaderService
+  ) {
+    this.store.select('sheet').subscribe((sheets) => {
       this.sheets = sheets;
-    })
+    });
     this.redirect = window.history.state;
-    this.store.select("user").subscribe(user=>{
+    this.store.select('user').subscribe((user) => {
       this.user = user;
-      
-      if(this.user.email!=""&&this.user.is_verified==true&&this.redirect.redirect){
+
+      if (
+        this.user.email != '' &&
+        this.user.is_verified == true &&
+        this.redirect.redirect
+      ) {
         this.router.navigateByUrl(this.redirect.redirect);
       }
-    })
-  
-
+    });
   }
-  ngOnInit(): void {
-    
-   
+  ngOnInit(): void {}
+
+  moveToSheet(id: number, sheet: Sheet) {
+    this.router.navigateByUrl('/sheet/' + id, { state: sheet });
   }
-
-
-
-
-
-
-
-  moveToSheet(id:number,sheet:Sheet){
-    this.router.navigateByUrl("/sheet/"+id,{state:sheet});
-  }
-
 }

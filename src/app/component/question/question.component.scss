@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap");
 .question {
   height: 60px;
   width: 92%;
@@ -8,105 +8,100 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
 
-  font-family: 'Kalam', cursive;
+  justify-content: space-evenly;
+
+  font-family: "Kalam", cursive;
   border-left: 1px solid #00ff84;
   border-top: 1px solid #00ff84;
   border-bottom: 1px solid #00ff84;
   padding-left: 0.4rem;
   margin-left: 0.6rem;
   margin-top: 0.6rem;
-  gap:0.4rem;
+  gap: 0.4rem;
+  padding-bottom: 0.2rem;
 
-
-
-.row{
-  width:100%;
-  height:100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-
-
-  .title{
-    width:83%;
-    height:100%;
-
-    font-size: 1.2rem;
-    overflow: hidden;
-    cursor: pointer;
-   white-space: nowrap;
-   display: flex;
-   align-items: center;
-
-    text-overflow: ellipsis;
-
-
-
-  }
-  a,a:active{
-    text-decoration: none;
-    color: black;
-
-  }
-  a:hover{
-    text-decoration: none;
-    color:purple;
-  }
-  .right{
-    width:15%;
+  .row {
+    width: 99%;
+    height: 65%;
     display: flex;
     flex-direction: row;
+
     align-self: flex-start;
-    justify-content: flex-end;
+    justify-content: space-between;
+   
 
-    margin-right: 1rem;
-    gap:0.2rem;
-    .flag{
+    .title {
+      width: 83%;
+      height: 100%;
 
-      cursor:pointer;
-
-
-    }
-    .heart{
+      font-size: 1.2rem;
+      overflow: hidden;
       cursor: pointer;
+      white-space: nowrap;
+      display: flex;
+      align-items:flex-end;
+      
 
 
+      text-overflow: ellipsis;
     }
-
+    a,
+    a:active {
+      text-decoration: none;
+      color: black;
+    }
+    a:hover {
+      text-decoration: none;
+      color: purple;
+    }
+    .right {
+      width: 15%;
+      display: flex;
+      flex-direction: row;
+      align-self: flex-start;
+      justify-content: flex-end;
+      margin-top: 0.2rem;
+      margin-right: 0.4rem;
+      gap: 0.2rem;
+      .flag {
+        cursor: pointer;
+      }
+      .heart {
+        cursor: pointer;
+      }
+    }
   }
-
+  button {
+    align-self: flex-end;
+    
+    margin-right: 1rem;
+    margin-left: 0.4rem;
+    background-color: rgb(220, 230, 230);
+    height: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
 }
-
-
-
-}
-
-
 
 .zigzag {
-
-  background: linear-gradient(-137deg,#d5dad7 5px, transparent 0) 0 5px, linear-gradient(320deg, #dbe4df 5px, #fff 0) 0 5px;
+  background: linear-gradient(-137deg, #d5dad7 5px, transparent 0) 0 5px,
+    linear-gradient(320deg, #dbe4df 5px, #fff 0) 0 5px;
 
   background-position: right bottom;
   background-repeat: repeat-y;
   background-size: 10px 10px;
 }
 
-
-.mat-badge-content{
-  font-family: 'Material Icons';
+.mat-badge-content {
+  font-family: "Material Icons";
   margin-left: 0.7rem;
   margin-top: 0.7rem;
   z-index: 1000;
-
 }
 
-
-.question:hover{
+.question:hover {
   transform: scale(1.03);
 }
-

@@ -8,9 +8,9 @@
   
   class="zigzag question"
   matRipple
-  [ngStyle]="strike == true ? styleObject() : {}"
+  
 >
-  <div  class="row" >
+  <div  class="row" [ngStyle]="strike == true ? styleObject() : {}" >
     <a
       class="title"
       href="{{question.question.question_url}}" target="_blank"
@@ -23,12 +23,18 @@
     </a>
 
     <div *ngIf="personal"class="right">
-      <div (click)="moveToFlag(question.id,2)" class="heart">
-        <mat-icon [ngStyle]="flag == true ? colorFill() :{}">{{flag==true?'favorite':'favorite_border'}}</mat-icon>
-      </div>
-      <div (click)="moveToDone(question.id, 3)" class="flag">
-        <mat-icon [ngStyle]="strike == true ? colorFill() :{}">{{strike==true?'check_box':'check_box_outline_blank'}}</mat-icon>
-      </div>
+     
+      
+        <div (click)="moveToFlag(question.id,2)" class="heart">
+          <mat-icon [ngStyle]="flag == true ? colorFill() :{}">{{flag==true?'favorite':'favorite_border'}}</mat-icon>
+        </div>
+        <div (click)="moveToDone(question.id, 3)" class="flag">
+          <mat-icon [ngStyle]="strike == true ? colorFill() :{}">{{strike==true?'check_box':'check_box_outline_blank'}}</mat-icon>
+        </div>
+   
+      
+     
     </div>
   </div>
+  <button  *ngIf="question.question.category && page=='learning'" mat-raised-button >{{question.question.category.name}}</button>
 </div>
