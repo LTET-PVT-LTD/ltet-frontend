@@ -54,7 +54,22 @@
 
           display: flex;
           flex-direction: column;
+          .search {
+            width:95%;
+            font-style: FortAwesome;
+            display: flex;
+            flex-direction: row;
+            height:30%;
+            margin-left: 2.4rem;
 
+            .search-bar{
+              width:50%;
+            }
+            .select{
+              width:23%;
+            }
+
+          }
 
 
           div{

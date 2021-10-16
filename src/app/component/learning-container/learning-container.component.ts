@@ -41,7 +41,14 @@ export class LearningContainerComponent implements OnInit, OnDestroy {
   sheets: Sheet[] = [];
   isLoading!: boolean;
   alreadySend = false;
-
+  searchQuestion="";
+  selectedCategory!:string;
+  selectedStatus!:{
+    num:number,
+    word:string
+  };
+  categories=["Array","Graph"];
+  status=[{num:1,word:"InComplete"},{num:2,word:"Favourite"},{num:3,word:"Done"}]
   constructor(
     private sheetService: SheetService,
     private store: Store<{ room: Room; user: User; sheet: Sheet[] }>,
