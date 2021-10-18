@@ -46,26 +46,37 @@
             <img src="../../../assets/empty.png">
           </div>
           <div class="users" *ngFor="let users of userRoom.users_questions">
-            <div class="search-box">
-              <input type="text" placeholder="search a question" [(ngModel)]="searchValue">
-              <mat-form-field appearance="fill">
+            <div class="search">
+              <mat-form-field class="search-bar" appearance="fill">
+                <input matInput class="form-control" type="text" name="search" [(ngModel)]="searchQuestion" autocomplete="off" placeholder="  Start searching for a question">
+              </mat-form-field>
+              <mat-form-field class="select" appearance="fill">
                 <mat-label>Category</mat-label>
-                <mat-select [formControl]="toppings
-                " >
-                  
-                  <mat-option *ngFor="let topping of [1,2,3,4,5]" [value]="topping">{{topping}}</mat-option>
+                <mat-select [(ngModel)]="selectedCategory" name="category">
+                  <mat-option *ngFor="let cat of categories" [value]="cat">
+                    {{cat}}
+                  </mat-option>
                 </mat-select>
               </mat-form-field>
+              <mat-form-field class="select" appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select [(ngModel)]="selectedStatus" name="status">
+                  <mat-option *ngFor="let stat of status" [value]="stat">
+                    {{stat.word}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+
             </div>
             <div
-            @rightToLeft 
+            @rightToLeft
               *ngIf="users.user_email == user.email && id == userRoom.sheet.id&& users.questions.length>0"
             >
-            
-            
+
               <app-question
-             
-                *ngFor="let question of users.questions | search:searchValue"
+
+                *ngFor="let question of users.questions  | searchStatus:selectedStatus?.num| searchQuestion:searchQuestion | searchCategory:selectedCategory "
                 [question]="question"
                 [personal]="true"
                 [page]='"learning"'
