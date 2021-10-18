@@ -1,5 +1,6 @@
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { addRoom, removeRoom } from 'src/app/action/room.action';
@@ -41,7 +42,8 @@ export class LearningContainerComponent implements OnInit, OnDestroy {
   sheets: Sheet[] = [];
   isLoading!: boolean;
   alreadySend = false;
-
+  searchValue:string="";
+  toppings = new FormControl();
   constructor(
     private sheetService: SheetService,
     private store: Store<{ room: Room; user: User; sheet: Sheet[] }>,

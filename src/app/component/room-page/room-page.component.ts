@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -15,6 +16,14 @@ import { RoomService } from 'src/app/service/room.service';
   selector: 'app-room-page',
   templateUrl: './room-page.component.html',
   styleUrls: ['./room-page.component.scss'],
+  animations:[
+    trigger('fadeIn', [
+      transition('void=>*', [
+       style({"opacity":"0"}),
+       animate(1500)
+      ]),
+    ])
+  ]
 
 })
 export class RoomPageComponent implements OnInit,OnDestroy {

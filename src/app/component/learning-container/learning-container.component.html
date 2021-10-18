@@ -46,15 +46,26 @@
             <img src="../../../assets/empty.png">
           </div>
           <div class="users" *ngFor="let users of userRoom.users_questions">
-
+            <div class="search-box">
+              <input type="text" placeholder="search a question" [(ngModel)]="searchValue">
+              <mat-form-field appearance="fill">
+                <mat-label>Category</mat-label>
+                <mat-select [formControl]="toppings
+                " >
+                  
+                  <mat-option *ngFor="let topping of [1,2,3,4,5]" [value]="topping">{{topping}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
             <div
             @rightToLeft 
               *ngIf="users.user_email == user.email && id == userRoom.sheet.id&& users.questions.length>0"
             >
             
+            
               <app-question
              
-                *ngFor="let question of users.questions"
+                *ngFor="let question of users.questions | search:searchValue"
                 [question]="question"
                 [personal]="true"
                 [page]='"learning"'

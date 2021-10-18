@@ -21,20 +21,23 @@
 
       {{ question.question.question_description }}
     </a>
+   
 
     <div *ngIf="personal"class="right">
-     
-      
-        <div (click)="moveToFlag(question.id,2)" class="heart">
-          <mat-icon [ngStyle]="flag == true ? colorFill() :{}">{{flag==true?'favorite':'favorite_border'}}</mat-icon>
-        </div>
-        <div (click)="moveToDone(question.id, 3)" class="flag">
-          <mat-icon [ngStyle]="strike == true ? colorFill() :{}">{{strike==true?'check_box':'check_box_outline_blank'}}</mat-icon>
-        </div>
-   
-      
+     <div class="top">
+      <button  *ngIf="question.question.category && page=='learning'" mat-raised-button >{{question.question.category.name}}</button>
+        
+     </div>
+     <div class="bottom">
+      <div (click)="moveToFlag(question.id,2)" class="heart">
+        <mat-icon [ngStyle]="flag == true ? colorFill() :{}">{{flag==true?'favorite':'favorite_border'}}</mat-icon>
+      </div>
+      <div (click)="moveToDone(question.id, 3)" class="flag">
+        <mat-icon [ngStyle]="strike == true ? colorFill() :{}">{{strike==true?'check_box':'check_box_outline_blank'}}</mat-icon>
+      </div>
+     </div>
      
     </div>
   </div>
-  <button  *ngIf="question.question.category && page=='learning'" mat-raised-button >{{question.question.category.name}}</button>
+ 
 </div>

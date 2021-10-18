@@ -54,6 +54,16 @@
 
           display: flex;
           flex-direction: column;
+          
+          .search-box{
+            width:100%;
+            height:10%;
+            margin-left:2.5rem;
+            input{
+              width:30%;
+              height:80%;
+            }
+          }
 
 
 
